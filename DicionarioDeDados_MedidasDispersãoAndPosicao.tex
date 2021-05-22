@@ -1,0 +1,194 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Atividade trilha 1 - Analise estátisticaca},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Atividade trilha 1 - Analise estátisticaca}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+Importação da planilha PelicanStores
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl)}
+\NormalTok{PelicanStores }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"C:/Users/guilherme.ssantos/Documents/R/AnaliseEstatisticaWithR/bases/PelicanStores.xlsx"}\NormalTok{, }
+    \AttributeTok{col\_types =} \FunctionTok{c}\NormalTok{(}\StringTok{"numeric"}\NormalTok{, }\StringTok{"text"}\NormalTok{, }\StringTok{"numeric"}\NormalTok{, }
+        \StringTok{"numeric"}\NormalTok{, }\StringTok{"text"}\NormalTok{, }\StringTok{"text"}\NormalTok{, }\StringTok{"text"}\NormalTok{, }
+        \StringTok{"numeric"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Construindo dicionário de dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dicionarioDeDadosPelicanStores }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+                   \AttributeTok{NomeDaVariavel =} \FunctionTok{c}\NormalTok{(}\StringTok{"Cliente"}\NormalTok{, }\StringTok{"Tipo de Cliente"}\NormalTok{, }\StringTok{"Itens"}\NormalTok{,}
+                                \StringTok{"Vendas líquidas"}\NormalTok{, }\StringTok{"Método de pagamento"}\NormalTok{, }\StringTok{"Gênero"}\NormalTok{,}
+                                \StringTok{"Estado civil"}\NormalTok{, }\StringTok{"Idade"}\NormalTok{),}
+\NormalTok{                   Descrição }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Id dos clientes"}\NormalTok{,}\StringTok{"Categoria dos clientes"}\NormalTok{,}\StringTok{"Quantidade de itens"}\NormalTok{,}\StringTok{" Valor da venda liquida"}\NormalTok{,}\StringTok{"Bandeira do cartão/cartão póprio"}\NormalTok{,}
+                                 \StringTok{"Categoria de genero do cliente"}\NormalTok{,}\StringTok{"Estado civil do cliente"}\NormalTok{,}\StringTok{"Idade do cliente"}\NormalTok{),}
+\NormalTok{                   TipoDaVariável }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"Categorica"}\NormalTok{,}\StringTok{"Categorica"}\NormalTok{,}\StringTok{"Numerica"}\NormalTok{,}\StringTok{"Numerica"}\NormalTok{,}\StringTok{"Categorica"}\NormalTok{,}\StringTok{"Categorica"}\NormalTok{,}\StringTok{"Categorica"}\NormalTok{,}\StringTok{"Numerica"}\NormalTok{),}
+                   
+\NormalTok{                   TipoDeMensuração }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"nominal"}\NormalTok{,}\StringTok{"nominal"}\NormalTok{,}\StringTok{"discreta"}\NormalTok{,}\StringTok{"razão"}\NormalTok{,}\StringTok{"nominal"}\NormalTok{,}\StringTok{"nominal"}\NormalTok{,}\StringTok{"nominal"}\NormalTok{,}\StringTok{"razão"}\NormalTok{),}
+                   
+                   \AttributeTok{ValoresPossiveis =} \FunctionTok{c}\NormalTok{(}\StringTok{"Identificação dos clientes"}\NormalTok{,}\StringTok{"Regular/Promossional"}\NormalTok{,}\StringTok{"Numeros inteiros positivos"}\NormalTok{,}\StringTok{"Numeros reais positivos"}\NormalTok{,}\StringTok{"Métodos de pagamentos"}\NormalTok{, }\StringTok{" Masculino/Feminino"}\NormalTok{, }\StringTok{" Casado/solteiro"}\NormalTok{,}\StringTok{"média, variação percentual"}\NormalTok{)}
+                   
+                   
+\NormalTok{                   )}
+\end{Highlighting}
+\end{Shaded}
+
+Dicionario de dados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{kable}\NormalTok{(dicionarioDeDadosPelicanStores)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.18}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.29}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.13}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.15}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.24}}@{}}
+\toprule
+NomeDaVariavel & Descrição & TipoDaVariável & TipoDeMensuração &
+ValoresPossiveis \\
+\midrule
+\endhead
+Cliente & Id dos clientes & Categorica & nominal & Identificação dos
+clientes \\
+Tipo de Cliente & Categoria dos clientes & Categorica & nominal &
+Regular/Promossional \\
+Itens & Quantidade de itens & Numerica & discreta & Numeros inteiros
+positivos \\
+Vendas líquidas & Valor da venda liquida & Numerica & razão & Numeros
+reais positivos \\
+Método de pagamento & Bandeira do cartão/cartão póprio & Categorica &
+nominal & Métodos de pagamentos \\
+Gênero & Categoria de genero do cliente & Categorica & nominal &
+Masculino/Feminino \\
+Estado civil & Estado civil do cliente & Categorica & nominal &
+Casado/solteiro \\
+Idade & Idade do cliente & Numerica & razão & média, variação
+percentual \\
+\bottomrule
+\end{longtable}
+
+\end{document}

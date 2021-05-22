@@ -1,0 +1,89 @@
+---
+title: "Atividade trilha 1 - Analise estátisticaca"
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
+---
+
+```{r}
+library(readxl)
+library(dplyr)
+library(knitr)
+```
+
+
+## Importação da planilha PelicanStores
+
+```{r}
+PelicanStores <- read_excel("./bases/PelicanStores.xlsx", 
+    col_types = c("numeric", "text", "numeric", 
+        "numeric", "text", "text", "text", 
+        "numeric"))
+```
+
+
+- Head do DataFrame
+
+```{r}
+kable(head(PelicanStores))
+```
+
+
+## Construindo dicionário de dados
+
+```{r}
+dicionarioDeDadosPelicanStores <- data.frame(
+                   NomeDaVariavel = c("Cliente", "Tipo de Cliente", "Itens",
+                                "Vendas líquidas", "Método de pagamento", "Gênero",
+                                "Estado civil", "Idade"),
+                   Descrição = c("Id dos clientes","Categoria dos clientes","Quantidade de itens"," Valor da venda liquida","Bandeira do cartão/cartão póprio",
+                                 "Categoria de genero do cliente","Estado civil do cliente","Idade do cliente"),
+                   TipoDaVariável = c("Categorica","Categorica","Numerica","Numerica","Categorica","Categorica","Categorica","Numerica"),
+                   
+                   TipoDeMensuração = c("nominal","nominal","discreta","razão","nominal","nominal","nominal","razão"),
+                   
+                   ValoresPossiveis = c("Identificação dos clientes","Regular/Promossional","Numeros inteiros positivos","Numeros reais positivos","Métodos de pagamentos", " Masculino/Feminino", " Casado/solteiro","média, variação percentual")
+                   
+                   
+                   )
+```
+ 
+## Dicionario de dados:
+```{r}
+kable(dicionarioDeDadosPelicanStores)
+```
+ 
+## Separando medidas de posição e variabilidade
+```{r}
+df_medias <- data.frame(Variaveis = c("Itens", "Vendas líquidas", "Idade"), Média = apply(PelicanStores[,c("Itens", "Vendas líquidas", "Idade")], 2, mean))
+df_medianas <- data.frame(Variaveis = c("Itens", "Vendas líquidas", "Idade"), Mediana = apply(PelicanStores[,c("Itens", "Vendas líquidas", "Idade")], 2, median))
+df_desvioPadrao <- data.frame(Variaveis = c("Itens", "Vendas líquidas", "Idade"), DesvioPad = apply(PelicanStores[,c("Itens", "Vendas líquidas", "Idade")], 2, sd))
+df_variancia <- data.frame(Variaveis = c("Itens", "Vendas líquidas", "Idade"), DesvioPad = apply(PelicanStores[,c("Itens", "Vendas líquidas", "Idade")], 2, var))
+
+```
+- Definindo a moda:  
+```{r}
+getmoda <- function(v){
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+df_modacat <- data.frame(Variaveis = c("Tipo de Cliente", "Método de Pagamento", "Gênero", "Estado Civil"), Moda = apply(PelicanStores[,c("Tipo de Cliente", "Método de Pagamento", "Gênero", "Estado Civil")], 2, getmoda), row.names = NULL)
+
+```
+
+```{r}
+df_1 <- left_join(df_medias, df_medianas, by = "Variaveis")
+df_2 <- left_join(df_1, df_desvioPadrao, by = "Variaveis")
+df_3 <- left_join(df_2,df_variancia, by = "Variaveis")
+```
+
+## Sumarização dos dados (medidas de posição e variabilidade):
+
+```{r}
+kable(df_3)
+kable(df_modacat)
+```
+
+
