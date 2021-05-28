@@ -1,0 +1,167 @@
+---
+title: "Atividade aprofundamento trilha 2 - Inferencia Estátistica"
+author: 'Guilherme Santana Santos, Matricula : 92068901'
+output:
+  html_document:
+    df_print: paged
+---
+
+
+**1. Suponha que o peso médio dos Pinguins Reis encontrados em uma colônia na
+Antártica no último ano foi 15.4 kg. Em uma amostra de 35 pinguins na mesma época
+neste ano, na mesma colônia, o peso médio foi 14.1kg. Assuma que o desvio padrão da
+população seja 2kg. A um nível de significância de 5%, nós podemos rejeitar a hipótese
+nula de que o peso médio dos pinguins não difere do último ano?
+Utilizando o exemplo do Ebook**
+
+Hipóteses:
+• 𝐻0: 𝜇0 = 15.4kg
+• 𝐻1: 𝜇0 ≠ 15.4kg
+
+Estatística de Teste (com base no eBook, faça os cálculos abaixo):
+xbar # media da amostra
+mu0 # valor da hipótese
+sigma # desvio padrão da população
+n # tamanho da amostra
+z # estatística de teste
+
+Teste de Hipóteses
+Agora os valores críticos em um nível de significância 𝛼 = 0.05
+alpha = 0.05
+z.half.alpha # Valor crítico
+
+A estatística de teste z (encontrado nos cálculos da Estatística de Teste) está dentro ou fora
+dos valores críticos (calculados agora)?? Isso significa que está dentro ou fora da região de
+aceitação.
+
+Ao aplicar o nível de significância de 0.05 (valor de Alpha apresentado), nós rejeitamos ou
+aceitamos a hipótese nula de que o peso médio dos pinguins se manteve em relação ao
+último ano.
+
+**Aplicação da solução:**
+
+```{r}
+xbar <- 14.1 #media da amostra
+mu0 <- 15.4 #valor da hipotese
+sigma <- 2 #desvio padrao
+n <- 35 #tamanho da amostra
+z = (xbar-mu0)/(sigma/sqrt(n)) #estatistica de teste z
+z
+```
+
+```{r}
+alpha <- 0.05 #nivel de significancia para rejeitar a hipotese nula
+z.half.alpha = qnorm(1 - alpha/2) #valores criticos em um nivel de significancia
+c(-z.half.alpha, z.half.alpha)
+```
+
+#### **Hipotese nula rejeitada**
+
+
+**2. Na indústria cerâmica, avalia-se sistematicamente a resistência de amostras de massas
+ cerâmicas, após o processo de queima. Dessas avaliações, sabe-se que certo tipo de
+ massa tem resistência mecânica aproximadamente normal, com média 53 MPa e
+ variância 16 MPa². Após a troca de alguns fornecedores de matérias-primas, deseja-se
+ verificar se houve alteração na qualidade. Uma amostra de 15 corpos de prova de
+ massa cerâmica acusou média igual a 50 MPa. Qual é a conclusão ao nível de
+ significância de 5 %?**
+
+Hipóteses:
+• 𝐻0: 𝜇0 = 53kg
+• 𝐻1: 𝜇0 ≠ 53kg
+
+Estatística de Teste:
+xbar # media da amostra
+mu0 # valor da hipótese
+sigma # desvio padrão da população
+n # tamanho da amostra
+z # estatística de teste
+
+Teste de Hipóteses
+Agora os valores críticos em um nível de significância 𝛼 = 0.05
+alpha = 0.05
+z.half.alpha # Valor crítico
+A estatística de teste z (encontrado nos cálculos da Estatística de Teste) está dentro ou fora
+dos valores críticos (calculados agora)?? Isso significa que está dentro ou fora da região de
+aceitação.
+
+Ao aplicar o nível de significância de 0.05 (valor de Alpha apresentado), nós rejeitamos ou
+aceitamos a hipótese nula de que a troca dos fornecedores não alterou a qualidade do
+produto.
+
+```{r}
+xbar <- 50#media da amostra
+mu0 <- 53#valor da hipotese
+sigma <- 4 #desvio padrao
+n <- 15#tamanho da amostra
+z = (xbar-mu0)/(sigma/sqrt(n)) #estatistica de teste z
+z
+```
+```{r}
+alpha <- 0.05 #nivel de significancia para rejeitar a hipotese nula
+z.half.alpha = qnorm(1 - alpha/2) #valores criticos em um nivel de significancia
+c(-z.half.alpha, z.half.alpha)
+```
+
+#### **Hipotese nula rejeitada**
+
+**3. O tempo para transmitir 10 MB em determinada rede de computadores varia segundo
+um modelo normal, com média 7,4 seg e variância 1,3 𝑠𝑒𝑔2
+. Depois de algumas
+mudanças na rede acredita-se numa redução no tempo de transmissão de dados, além
+de uma possível alteração na variabilidade. Foram realizados 10 ensaios
+independentes com um arquivo de 10 MB e foram anotados os tempos de transmissão,
+em segundos:**
+
+6,8; 7,1; 5,9; 7,5; 6,3; 6,9; 7,2; 7,6; 6,6; 6,3
+
+Existe evidência suficiente de que o tempo médio de transmissão foi reduzido? Use
+nível de significância de 1%**
+
+
+Hipóteses:
+• 𝐻0: 𝜇0 = 7.4𝑠
+• 𝐻1: 𝜇0 < 7.4𝑠
+
+
+Estatística de Teste: (não temos a variância da população, então utilizamos a da amostra;
+ver ebook Trilha 02, último exemplo que utiliza t de Student)
+
+Utilize uma aproximação da distribuição dos tempos dos 10 ensaios por uma distribuição
+normal, com média 𝜇 e variância 𝜎2/𝑛
+
+Solução:
+#teste unilateral
+alpha = 0.01
+amostra <- c(6.8, 7.1, 5.9, 7.5, 6.3, 6.9, 7.2, 7.6, 6.6, 6.3)
+n # tamanho da amostra
+df # graus de liberdade
+S # desvio padrão da amostra
+mu0 # valor da hipótese
+xbar # média da amostra
+tc <- # Equação para calculo de TC
+Tt # Equação da Estatística de Teste
+
+A estatística de teste Tt (encontrado nos cálculos da Estatística de Teste) está dentro ou fora
+da região de aceitação?
+
+Ao aplicar o nível de significância de 1% (ou 0.01 -- valor de Alpha apresentado), nós
+rejeitamos ou aceitamos a hipótese de que a diferença foi significativa.
+
+```{r}
+#teste unilateral
+alpha = 0.01
+amostra <- c(6.8,7.1,5.9,7.5, 6.3, 6.9, 7.2, 7.6, 6.6, 6.3)
+
+n <- 10 #tamanho da amostra
+df <- 9 #graus de liberdade
+S <-  sd(amostra) #desvio padrao da amostra
+mu0 <- 7.4 #valor da hipostese
+xbar <- mean(amostra) #media
+tc <- qt(alpha/2, df =df); tc #região critica
+
+Tt =(sqrt(n)*(xbar - mu0))/S; ## estatistica de teste T
+ "Estatistica de teste T:"; Tt 
+
+```
+#### **Aceitamos a hipótese de que a diferença foi significativa**
